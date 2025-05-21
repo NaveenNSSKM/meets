@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting</title>
+    <link rel="icon" href="log.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend Deca', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        body {
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-image: url(main-banner.jpg);
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-color: #222; /* Fallback background color */
+            overflow: hidden;
+            padding-top: 90px; /* Add padding to account for navbar height */
+        }
+
+        /* Background Animation */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,56,151,0.3) 0%, rgba(72,52,212,0.3) 100%);
+            animation: gradientShift 8s ease infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                opacity: 0.4;
+                background-position: 0% 50%;
+            }
+            100% {
+                opacity: 0.7;
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 5%;
+            width: 100%;
+            animation: slideDown 0.8s ease-out forwards;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent; /* Start with transparent background */
+        }
+
+        /* Add this for scrolling effect */
+        .navbar.scrolled {
+            background-image: url(main-banner.jpg);
+            background-size: cover;
+            background-position: top center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 15px 5%;
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 150px;
+            width: 70%;
+            animation: logoSpin 1.2s ease-out forwards;
+            transform-origin: center center;
+        }
+
+        @keyframes logoSpin {
+            0% {
+                transform: rotateY(180deg) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: rotateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .btn-tickets {
+            background-color: #ff3897;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-tickets:hover {
+            background-color: #e42e85;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            height: 85vh;
+            padding-top: 30px;
+        }
+
+        .hero-content {
+            width: 50%;
+            z-index: 10;
+            perspective: 1000px;
+            animation: contentFlip 1.2s ease-out forwards;
+        }
+
+        @keyframes contentFlip {
+            0% {
+                opacity: 0;
+                transform: rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: textAppear 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+            line-height: 1.5;
+            border-radius: 20px;
+            animation: textAppear 0.8s ease-out 1.0s forwards;
+            opacity: 0;
+        }
+
+        .btn-buy {
+            background-color: #4834d4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            animation: textAppear 0.8s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-buy:hover {
+            background-color: #3728a7;
+        }
+
+        /* Person with Megaphone */
+        .speaker-image {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            height: 80%;
+            z-index: 5;
+            animation: speakerFlipIn 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards, speakerPulse 3s ease-in-out 2s infinite alternate;
+            transform-origin: center bottom;
+        }
+
+        @keyframes speakerFlipIn {
+            0% {
+                opacity: 0;
+                transform: rotateY(-90deg) translateX(100px);
+            }
+            60% {
+                opacity: 1;
+                transform: rotateY(15deg) translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0) translateX(0);
+            }
+        }
+
+        @keyframes speakerPulse {
+            0% {
+                transform: scale(1) translateY(0px);
+            }
+            100% {
+                transform: scale(1.03) translateY(-10px);
+            }
+        }
+
+        /* Add megaphone specific animation */
+        .speaker-image::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            right: 40%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+            animation: soundWave 1.5s ease-out infinite;
+        }
+
+        @keyframes soundWave {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: #f9f9f9;
+            padding: 80px 5%;
+            color: #333;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5rem;
+            color: #1d2b4f;
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-heading h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff3897, #4834d4);
+            border-radius: 2px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .feature-card {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 2px solid transparent;
+            
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            border-color: #e0e0e0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: transform 0.6s  ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover .icon-wrapper {
+            transform: rotateY(360deg);
+        }
+
+        .experience-icon {
+            background-color: #30d5e8;
+        }
+
+        .networking-icon {
+            background-color: #7c2ae8;
+        }
+
+        .party-icon {
+            background-color: #d4197d;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+            transition: all 0.6s;
+            backface-visibility: visible;
+        }
+        
+        .feature-card:hover .icon {
+            transform: rotateY(180deg);
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1d2b4f;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+      
+
+        /* Responsive */
+        @media only screen and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .speaker-image {
+                right: 5%;
+                height: 70%;
+            }
+            
+            .speaker-image::after {
+                right: 40%;
+                top: 32%;
+            }
+
+            .section-heading h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 4%;
+            }
+            
+            .logo img {
+                max-width: 120px;
+            }
+            
+            .btn-tickets {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                height: auto;
+                padding-top: 100px;
+                padding-bottom: 30px;
+            }
+            
+            .hero-content {
+                width: 100%;
+                margin-bottom: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .speaker-image {
+                position: relative;
+                right: 0;
+                height: 400px;
+                margin: 0 auto;
+                animation: speakerFlipMobile 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards, speakerPulseMobile 3s ease-in-out 2s infinite alternate;
+            }
+            
+            .speaker-image::after {
+                right: 30%;
+                top: 25%;
+            }
+            
+            @keyframes speakerFlipMobile {
+                0% {
+                    opacity: 0;
+                    transform: rotateX(90deg);
+                }
+                100% {
+                    opacity: 1;
+                    transform: rotateX(0);
+                }
+            }
+            
+            @keyframes speakerPulseMobile {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(1.05);
+                }
+            }
+
+            .features {
+                gap: 20px;
+            }
+            
+            .feature-card {
+                min-width: 250px;
+            }
+
+            .section-heading h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .navbar {
+                padding: 12px 3%;
+            }
+            
+            .logo img {
+                max-width: 100px;
+            }
+            
+            .btn-tickets {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn-buy {
+                padding: 12px 24px;
+            }
+            
+            .speaker-image {
+                height: 300px;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+            
+            .feature-card {
+                min-width: 100%;
+            }
+
+            .section-heading h2 {
+                font-size: 1.8rem;
+            }
+        }
+        /* register meeting */
+      
+      .con {
+    display: flex;
+    width: 100%;
+    padding: 80px 5%;
+    position: relative;
+}
+
+.section-heading {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Additional styling for better appearance (optional) */
+.section-heading h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+/* Optional decorative element */
+.section-heading h2:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #ff0082; /* Matching your pink accent color */
+}
+    
+.blob-shape {
+    width: 50%;
+    border-radius: 70% 60% 70% 50% / 30% 70% 50% 80%;
+    background-image: url('Event-banner.jpg');
+    background-position: center center;   /* Centers the image */
+    background-repeat: no-repeat;         /* Prevents tiling */
+    background-size: cover;               /* Covers the entire area */
+    position: relative;
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 450px;
+    overflow: hidden;
+}
+
+.blob-shape::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/api/placeholder/600/400');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.content-section {
+    width: 50%;
+    padding: 60px;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-details {
+    position: relative;
+    z-index: 2;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: #0039a6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.detail-text {
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.category {
+    color: #ff0082;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: #1a237e;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.register-btn {
+    background-color: #ff0082;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #d10068;
+    transform: translateY(-2px);
+}
+
+.decoration {
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.decoration-1 {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(151, 206, 151, 0.6);
+    top: 50px;
+    right: 100px;
+}
+
+.decoration-2 {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 229, 248, 0.6);
+    bottom: 100px;
+    right: 200px;
+}
+
+.decoration-3 {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(62, 15, 223, 0.6);
+    bottom: 50px;
+    right: 50px;
+}
+
+/* Improved Mobile Responsiveness */
+@media (max-width: 992px) {
+    .con {
+        padding: 60px 4%;
+    }
+    
+    .content-section {
+        padding: 40px;
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .con {
+        flex-direction: column;
+        padding: 40px 4%;
+    }
+    
+    .blob-shape, .content-section {
+        width: 100%;
+    }
+    
+    .blob-shape {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        min-height: 300px;
+        padding: 30px 25px;
+        margin-bottom: 20px;
+    }
+    
+    .content-section {
+        padding: 25px 20px;
+        text-align: center;
+    }
+    
+    .detail-item {
+        justify-content: center;
+        text-align: left;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .detail-text {
+        font-size: 16px;
+    }
+    
+    .decoration {
+        display: none; /* Hide decorations on mobile for cleaner look */
+    }
+}
+
+@media (max-width: 480px) {
+    .con {
+        padding: 30px 3%;
+    }
+    
+    .blob-shape {
+        min-height: 250px;
+        padding: 25px 20px;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .icon-circle {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .detail-text {
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .section-heading h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* speaker sections */
+   .c {
+            width: 100%;
+           background-color: #e0e0e0;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .event-title {
+            text-align: left;
+            color: #1a1a47;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .background-text {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 20vw;
+            font-weight: bold;
+            color: rgba(240, 240, 240, 0.6);
+            z-index: 1;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .speakers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            min-height: 500px;
+        }
+
+        .featured-speaker {
+            width: 300px;
+            margin-right: 40px;
+            margin-bottom: 40px;
+        }
+
+        .featured-speaker-image {
+            width: 100%;
+            height: auto;
+            border-radius: 35% 45% 35% 45%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-speaker-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s ease;
+        }
+
+        .speaker-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .speaker-name {
+            color: #1a1a47;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-role {
+            color: #ff3e81;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-bio {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #1a1a47;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon i {
+            font-size: 16px;
+        }
+
+        .other-speakers {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        .circle-speaker {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .circle-speaker:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle-speaker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .circle-speaker:nth-child(1) {
+            top: 20%;
+            right: 40%;
+        }
+
+        .circle-speaker:nth-child(2) {
+            top: 10%;
+            right: 10%;
+        }
+
+        .circle-speaker:nth-child(3) {
+            top: 40%;
+            right: 20%;
+        }
+
+        .circle-speaker:nth-child(4) {
+            top: 60%;
+            right: 45%;
+        }
+
+        .circle-speaker:nth-child(5) {
+            top: 75%;
+            right: 15%;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .other-speakers {
+                width: 100%;
+                position: relative;
+                height: 300px;
+                margin-top: 30px;
+            }
+            
+            .featured-speaker {
+                margin-right: 0;
+            }
+            
+            .circle-speaker:nth-child(1) {
+                top: 20%;
+                right: 70%;
+            }
+
+            .circle-speaker:nth-child(2) {
+                top: 10%;
+                right: 50%;
+            }
+
+            .circle-speaker:nth-child(3) {
+                top: 40%;
+                right: 30%;
+            }
+
+            .circle-speaker:nth-child(4) {
+                top: 60%;
+                right: 50%;
+            }
+
+            .circle-speaker:nth-child(5) {
+                top: 15%;
+                right: 20%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+            
+            .featured-speaker {
+                width: 250px;
+            }
+
+            .circle-speaker {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 30px 15px;
+            }
+            
+            .event-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+            
+            .featured-speaker {
+                width: 200px;
+            }
+            
+            .other-speakers {
+                height: 200px;
+            }
+            
+            .circle-speaker {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Hidden speaker data */
+        .speaker-data {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="log.png" alt="FizCon Logo">
+            </div>
+            
+            <button class="btn-tickets">Register Now</button>
+        </nav>
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 style="color: wheat;">INNOVATE TECH CONFERENCE</h1>
+                <p>The Tech Innovation 2025 is scheduled for January in Bangalore.</p>
+                <button class="btn-buy">Register Now</button>
+            </div>
+            
+            <!-- Person with Megaphone -->
+            <img src="banner-person.png" alt="Speaker with megaphone" class="speaker-image">
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="section-heading">
+            <h2>Our Features</h2>
+        </div>
+        
+        <div class="features">
+            <!-- Experience Feature -->
+            <div class="feature-card">
+                <div class="icon-wrapper experience-icon">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" viewBox="0 0 24 24">
+  <path d="M17 3V1H7v2H2v4c0 2.21 1.79 4 4 4 .6 0 1.17-.13 1.68-.36A6.986 6.986 0 0011 13.9V18H7v2h10v-2h-4v-4.1c1.24-.57 2.3-1.51 3.13-2.7.51.23 1.08.36 1.68.36 2.21 0 4-1.79 4-4V3h-5zM6 9c-1.1 0-2-.9-2-2V5h3v2c0 .76.1 1.5.29 2.2-.4.19-.84.3-1.29.3zm14-2c0 1.1-.9 2-2 2-.45 0-.89-.11-1.29-.3.19-.7.29-1.44.29-2.2V5h3v2z"/>
+</svg>
+
+                </div>
+                <h3 class="feature-title">Experience</h3>
+                <p class="feature-description">Meet the experts from the tech and design world you follow online. Lorem tempus id. integandi</p>
+               
+            </div>
+
+            <!-- Networking Feature -->
+            <div class="feature-card">
+                <div class="icon-wrapper networking-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" viewBox="0 0 24 24">
+  <path d="M2.5 19.5l5.4-2.7c.2.2.5.3.7.5l-.6 3.5 1.9 1.9 3.5-.6c.2.2.3.5.5.7l-2.7 5.4-8.7-8.7zm18.8-13c-1.4-1.4-3.2-2.2-5.2-2.2-3.5 0-6.5 2.3-7.6 5.5l-1.5 4.5 4.5-1.5c3.2-1.1 5.5-4.1 5.5-7.6 0-2-.8-3.8-2.2-5.2zM4 4l3 3"/>
+</svg>
+
+                </div>
+                <h3 class="feature-title">Networking</h3>
+                <p class="feature-description">Connect with and exchange ideas with designers from all over the world. Party Intimate cocktail party</p>
+                
+            </div>
+
+            <!-- Party Feature -->
+            <div class="feature-card">
+                <div class="icon-wrapper party-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" viewBox="0 0 24 24">
+  <path d="M7 2v2h10V2h2v2h1v2h-1v11a5 5 0 01-10 0V6H6V4h1V2h2zm2 4v11a3 3 0 006 0V6H9z"/>
+</svg>
+
+                </div>
+                <h3 class="feature-title">Party</h3>
+                <p class="feature-description">Intimate cocktail party watching the sunset over San Francisco Bay. Lorem emporibus id. In intege salutandi</p>
+              
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------Register Meeting----------------------------------------------->
+
+    <div class="section-heading">
+            <h2>Our Meeting</h2>
+        </div>
+    <div class="con" >
+
+    
+        <div class="blob-shape">
+            
+            <div class="event-details">
+                <div class="detail-item">
+                    <div class="icon-circle"> <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#ff0082">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+  </svg></div>
+                    <div class="detail-text">The National Gallery<br>London, Belfast</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="icon-circle"> <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#ff0082">
+    <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/>
+  </svg></div>
+                    <div class="detail-text">23/11/2018</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="icon-circle"> <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#ff0082">
+    <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm1 11h-4V7h2v4h2v2z"/>
+  </svg></div>
+                    <div class="detail-text">8:00 am 5:00 pm</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="category">Design & Development Events</div>
+            <h1>Pixel Pioneers Belfast 2019</h1>
+            <p class="description">Pixel Pioneers, a one-day conference for web and UX designers and front-end developers, will take place on the 23rd of November 2019 in Belfast.</p>
+            <button class="register-btn">Register Now</button>
+        </div>
+    </div>
+    
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+    <div class="decoration decoration-3"></div>
+
+<!--------------------------------speakers-------------------------------------------->
+
+<div class="c">
+        <div class="section-heading" style="margin-bottom: 60px;">
+            <h2>Event Speakers</h2>
+        </div>
+       
+        
+        <div class="speakers-grid">
+            <div class="featured-speaker">
+                <div class="featured-speaker-image">
+                    <img id="mainSpeakerImage" src="speaker.png" alt="Otha Shoji">
+                </div>
+                <div class="speaker-info">
+                    <h2 id="mainSpeakerName" class="speaker-name">Otha Shoji</h2>
+                    <p id="mainSpeakerRole" class="speaker-role">Marketing Manager</p>
+                    <p id="mainSpeakerBio" class="speaker-bio">Saperet tibique delicatissimi per et, laudem propriae cotidieuo. Ea agam postu</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="other-speakers">
+                <div class="circle-speaker" onclick="changeSpeaker(0)">
+                    <img src="speaker_1.png" alt="Speaker 1">
+                </div>
+                <div class="circle-speaker" onclick="changeSpeaker(1)">
+                    <img src="speaker_2.png" alt="Speaker 2">
+                </div>
+                <div class="circle-speaker" onclick="changeSpeaker(2)">
+                    <img src="speaker_3.png" alt="Speaker 3">
+                </div>
+                <div class="circle-speaker" onclick="changeSpeaker(3)">
+                    <img src="speaker_4.png" alt="Speaker 4">
+                </div>
+                <div class="circle-speaker" onclick="changeSpeaker(4)">
+                    <img src="speaker_1.png" alt="Speaker 5">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden data for speakers -->
+    <div class="speaker-data">
+        <div id="speaker0">
+            <img src="speaker_1.png" alt="Otha Shoji">
+            <h2>Otha Shoji</h2>
+            <p>Marketing Manager</p>
+            <p>Saperet tibique delicatissimi per et, laudem propriae cotidieuo. Ea agam postu</p>
+        </div>
+        <div id="speaker1">
+            <img src="speaker_2.png" alt="Alex Kim">
+            <h2>Alex Kim</h2>
+            <p>UI Designer</p>
+            <p>Expert in creating beautiful user interfaces with focus on user experience.</p>
+        </div>
+        <div id="speaker2">
+            <img src="speaker_3.png" alt="Sarah Johnson">
+            <h2>Sarah Johnson</h2>
+            <p>Content Strategist</p>
+            <p>Creating engaging content strategies for major brands worldwide.</p>
+        </div>
+        <div id="speaker3">
+            <img src="speaker_4.png" alt="Miguel Rodriguez">
+            <h2>Miguel Rodriguez</h2>
+            <p>Development Lead</p>
+            <p>Full-stack developer with expertise in modern web technologies.</p>
+        </div>
+        <div id="speaker4">
+            <img src="speaker_1.png" alt="Emma Chen">
+            <h2>Emma Chen</h2>
+            <p>Product Manager</p>
+            <p>Leading product development teams with agile methodologies.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to change the main speaker when clicking on circular images
+        function changeSpeaker(speakerIndex) {
+            // Get speaker data
+            const speakerId = 'speaker' + speakerIndex;
+            const speakerDiv = document.getElementById(speakerId);
+            
+            if (speakerDiv) {
+                const speakerImg = speakerDiv.querySelector('img').src;
+                const speakerName = speakerDiv.querySelector('h2').innerText;
+                const speakerRole = speakerDiv.querySelector('p').innerText;
+                const speakerBio = speakerDiv.querySelectorAll('p')[1].innerText;
+                
+                // Update main display with animation
+                document.getElementById('mainSpeakerImage').style.opacity = '0';
+                document.getElementById('mainSpeakerName').style.opacity = '0';
+                document.getElementById('mainSpeakerRole').style.opacity = '0';
+                document.getElementById('mainSpeakerBio').style.opacity = '0';
+                
+                setTimeout(() => {
+                    document.getElementById('mainSpeakerImage').src = speakerImg;
+                    document.getElementById('mainSpeakerName').innerText = speakerName;
+                    document.getElementById('mainSpeakerRole').innerText = speakerRole;
+                    document.getElementById('mainSpeakerBio').innerText = speakerBio;
+                    
+                    document.getElementById('mainSpeakerImage').style.opacity = '1';
+                    document.getElementById('mainSpeakerName').style.opacity = '1';
+                    document.getElementById('mainSpeakerRole').style.opacity = '1';
+                    document.getElementById('mainSpeakerBio').style.opacity = '1';
+                }, 300);
+            }
+        }
+    </script>
+   
+    <!-- JavaScript for Scrolling Navbar Effect -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
