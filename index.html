@@ -6,7 +6,10 @@
     <title>Meeting</title>
     <link rel="icon" href="log.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+ <link rel="shortcut icon" href="footerlogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
         * {
@@ -32,6 +35,7 @@
             background-color: #222; /* Fallback background color */
             overflow: hidden;
             padding-top: 90px; /* Add padding to account for navbar height */
+            
         }
 
         /* Background Animation */
@@ -118,7 +122,7 @@
         }
 
         .btn-tickets {
-            background-color: #ff3897;
+            background-color: #ff0082;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -784,92 +788,75 @@ h1 {
 }
 
 /* speaker sections */
-   .c {
-            width: 100%;
-           background-color: #e0e0e0;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-        }
+.c{
+background-color: #f9f9f9;
+  
+    
+    padding: 80px 5%;
+    
+}
+   
+   
 
-        .event-title {
-            text-align: left;
-            color: #1a1a47;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .background-text {
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-size: 20vw;
-            font-weight: bold;
-            color: rgba(240, 240, 240, 0.6);
-            z-index: 1;
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .speakers-grid {
+        .featured-speaker-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-            min-height: 500px;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
         .featured-speaker {
-            width: 300px;
-            margin-right: 40px;
-            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at top left, #38006b, #0d001a);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 600px;
         }
 
         .featured-speaker-image {
-            width: 100%;
-            height: auto;
-            border-radius: 35% 45% 35% 45%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
             overflow: hidden;
-            position: relative;
+            margin-bottom: 20px;
+            border: 5px solid #ff0082;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .featured-speaker-image img {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: all 0.5s ease;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
         .speaker-info {
             text-align: center;
-            margin-top: 20px;
         }
 
         .speaker-name {
-            color: #1a1a47;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            color: #ffffff;
             margin-bottom: 5px;
-            transition: all 0.3s ease;
         }
 
         .speaker-role {
-            color: #ff3e81;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            color: #ff0082;
             margin-bottom: 15px;
-            transition: all 0.3s ease;
+            font-weight: bold;
         }
 
         .speaker-bio {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
 
@@ -877,38 +864,33 @@ h1 {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 15px;
         }
 
         .social-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: #1a1a47;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            color: #555;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .social-icon:hover {
+            background-color: #ff0082;
+            color: white;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-icon i {
-            font-size: 16px;
         }
 
         .other-speakers {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 50%;
-            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .circle-speaker {
@@ -916,15 +898,19 @@ h1 {
             height: 80px;
             border-radius: 50%;
             overflow: hidden;
-            position: absolute;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 3px solid #ddd;
         }
 
         .circle-speaker:hover {
             transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: #ff0082;
+        }
+
+        .circle-speaker.active {
+            border-color: #ff0082;
+            transform: scale(1.1);
         }
 
         .circle-speaker img {
@@ -933,114 +919,622 @@ h1 {
             object-fit: cover;
         }
 
-        .circle-speaker:nth-child(1) {
-            top: 20%;
-            right: 40%;
-        }
-
-        .circle-speaker:nth-child(2) {
-            top: 10%;
-            right: 10%;
-        }
-
-        .circle-speaker:nth-child(3) {
-            top: 40%;
-            right: 20%;
-        }
-
-        .circle-speaker:nth-child(4) {
-            top: 60%;
-            right: 45%;
-        }
-
-        .circle-speaker:nth-child(5) {
-            top: 75%;
-            right: 15%;
-        }
-
         /* Responsive styles */
-        @media (max-width: 1024px) {
+        @media (min-width: 768px) {
+            .featured-speaker {
+                flex-direction: row;
+                padding: 30px;
+            }
+
+            .featured-speaker-image {
+                margin-right: 30px;
+                margin-bottom: 0;
+            }
+
+            .speaker-info {
+                text-align: left;
+                flex: 1;
+            }
+
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (min-width: 992px) {
             .other-speakers {
                 width: 100%;
+                display: flex;
+                justify-content: center;
                 position: relative;
-                height: 300px;
-                margin-top: 30px;
+            }
+
+            .left-speakers, .right-speakers {
+                display: flex;
+                gap: 20px;
+            }
+
+            .left-speakers {
+                margin-right: 30px;
             }
             
-            .featured-speaker {
-                margin-right: 0;
-            }
-            
-            .circle-speaker:nth-child(1) {
-                top: 20%;
-                right: 70%;
+            .right-speakers {
+                margin-left: 30px;
             }
 
-            .circle-speaker:nth-child(2) {
-                top: 10%;
-                right: 50%;
-            }
-
-            .circle-speaker:nth-child(3) {
-                top: 40%;
-                right: 30%;
-            }
-
-            .circle-speaker:nth-child(4) {
-                top: 60%;
-                right: 50%;
-            }
-
-            .circle-speaker:nth-child(5) {
-                top: 15%;
-                right: 20%;
+            .speakers-divider {
+                width: 100px;
             }
         }
 
+                /* Animation styles */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.5s ease-in-out;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+
+        /* Animations for the speaker thumbnails */
+        .left-speakers .circle-speaker {
+            animation: slideInRightThumbnail 0.5s ease-in-out;
+        }
+        
+        .right-speakers .circle-speaker {
+            animation: slideInLeftThumbnail 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRightThumbnail {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInLeftThumbnail {
+            from { 
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* sponsor sections */
+
+        
+        .contr {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .sponsors-section {
+            margin-top: 90px;
+           background: radial-gradient(circle at top left, #38006b, #0d001a);
+            padding: 80px 0;
+            text-align: center;
+            
+            position: relative;
+            overflow: hidden;
+            border-radius: 800px;
+        }
+        
+        .sponsors-section h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .sponsors-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+            margin: 0 auto;
+            gap: 30px;
+        }
+        
+        .sponsor-logo {
+           
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            width: 200px;
+            height: 100px;
+        }
+        
+        .sponsor-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: brightness(0.6) grayscale(0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-logo:hover {
+            transform: translateY(-5px);
+          
+        }
+        
+        .sponsor-logo:hover img {
+            filter: brightness(1) grayscale(0);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .sponsors-container {
+                gap: 20px;
+            }
+            
+            .sponsor-logo {
+                width: 180px;
+                height: 90px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .event-title {
-                font-size: 2rem;
-                text-align: center;
+            .sponsors-container {
+                gap: 15px;
             }
             
-            .featured-speaker {
-                width: 250px;
-            }
-
-            .circle-speaker {
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 30px 15px;
+            .sponsor-logo {
+                width: 150px;
+                height: 80px;
+                padding: 15px;
             }
             
-            .event-title {
+            .sponsors-section h2 {
                 font-size: 1.8rem;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sponsors-container {
+                gap: 10px;
             }
             
-            .featured-speaker {
-                width: 200px;
+            .sponsor-logo {
+                width: 130px;
+                height: 70px;
+                padding: 12px;
             }
             
-            .other-speakers {
-                height: 200px;
+            .sponsors-section {
+                padding: 40px 15px;
             }
             
-            .circle-speaker {
-                width: 50px;
-                height: 50px;
+            .sponsors-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
             }
         }
 
-        /* Hidden speaker data */
-        .speaker-data {
-            display: none;
+        /* form section */
+          .submit {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            min-height: 550px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 80px;
+            border-top-right-radius: 90px;
+            border-bottom-right-radius: 90px;
+            border-top-left-radius: 90px;
+            border-bottom-left-radius: 90px;
         }
+
+        .image-section {
+            flex: 1;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 90px;
+            background-color: #ffffff;
+            border-top-right-radius: 90px;
+            border-bottom-right-radius: 90px;
+            z-index: 1;
+        }
+
+        .image-section img {
+            width: 70%;
+            height: auto;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            background: radial-gradient(circle at top left, #38006b, #0d001a);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container {
+            max-width: 350px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-heading {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .checkbox-group a {
+            color: #ff0082;
+            text-decoration: none;
+            margin-left: 4px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sign-in-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff0082;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .alt-signin {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .separator span {
+            padding: 0 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+     
+
+        
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .submit {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .image-section {
+                min-height: 250px;
+            }
+
+            .image-section::after {
+                display: none;
+            }
+
+            .form-section {
+                padding: 30px 20px;
+            }
+        }
+  
+           .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+       .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 1rem 0;
+      padding: 0.8rem 0;
+      
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f0f0f7;
+      color: black;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background-color: #ff0082;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+
+    /* footer section */
+   
+        
+        .footer {
+            background-color: #141440;
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .newsletter-section {
+            margin-bottom: 30px;
+        }
+        
+        .newsletter-section h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: normal;
+        }
+        
+        .newsletter-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background-color: #f0268f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #d91e7f;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #f0268f;
+        }
+        
+       
+        .copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .decoration-1 {
+            width: 80px;
+            height: 80px;
+            background-color: #5a1c66;
+            left: 10%;
+            bottom: 20%;
+        }
+        
+        .decoration-2 {
+            width: 30px;
+            height: 30px;
+            background-color: #1089b3;
+            right: 15%;
+            top: 30%;
+        }
+        
+        .decoration-line-1 {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            right: 10%;
+            bottom: 10%;
+        }
+        
+        .decoration-line-2 {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            left: 15%;
+            top: 15%;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .newsletter-section h2 {
+                font-size: 24px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+            
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 5px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .newsletter-section h2 {
+                font-size: 20px;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
+  
+
     </style>
 </head>
 <body>
@@ -1051,7 +1545,7 @@ h1 {
                 <img src="log.png" alt="FizCon Logo">
             </div>
             
-            <button class="btn-tickets">Register Now</button>
+            <button class="btn-tickets" ><a href="#registrationForm" style="text-decoration: none;color: white;">Register Now</a></button>
         </nav>
         
         <!-- Hero Section -->
@@ -1059,7 +1553,7 @@ h1 {
             <div class="hero-content">
                 <h1 style="color: wheat;">INNOVATE TECH CONFERENCE</h1>
                 <p>The Tech Innovation 2025 is scheduled for January in Bangalore.</p>
-                <button class="btn-buy">Register Now</button>
+                <button class="btn-buy"><a href="#registrationForm" style="text-decoration: none;color: white;">Register Now</a></button>
             </div>
             
             <!-- Person with Megaphone -->
@@ -1168,11 +1662,13 @@ h1 {
             <h2>Event Speakers</h2>
         </div>
        
-        
-        <div class="speakers-grid">
+    
+
+   <div class="speakers-container">
+        <div class="featured-speaker-container">
             <div class="featured-speaker">
                 <div class="featured-speaker-image">
-                    <img id="mainSpeakerImage" src="speaker.png" alt="Otha Shoji">
+                    <img id="mainSpeakerImage" src="speaker1.webp" alt="Featured Speaker">
                 </div>
                 <div class="speaker-info">
                     <h2 id="mainSpeakerName" class="speaker-name">Otha Shoji</h2>
@@ -1187,103 +1683,348 @@ h1 {
                             <i class="fab fa-twitter"></i>
                         </a>
                         <a href="#" class="social-icon">
-                            <i class="fab fa-pinterest-p"></i>
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="#" class="social-icon">
-                            <i class="fab fa-dribbble"></i>
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="other-speakers">
-                <div class="circle-speaker" onclick="changeSpeaker(0)">
-                    <img src="speaker_1.png" alt="Speaker 1">
+        </div>
+        
+        <div class="other-speakers">
+            <div class="left-speakers">
+                <div class="circle-speaker active" onclick="changeSpeaker(0)">
+                    <img src="speaker1.webp" alt="Speaker 1">
                 </div>
                 <div class="circle-speaker" onclick="changeSpeaker(1)">
-                    <img src="speaker_2.png" alt="Speaker 2">
+                    <img src="speaker2.webp" alt="Speaker 2">
                 </div>
                 <div class="circle-speaker" onclick="changeSpeaker(2)">
-                    <img src="speaker_3.png" alt="Speaker 3">
+                    <img src="speaker3.webp" alt="Speaker 3">
                 </div>
+            </div>
+            
+            <div class="speakers-divider"></div>
+            
+            <div class="right-speakers">
                 <div class="circle-speaker" onclick="changeSpeaker(3)">
-                    <img src="speaker_4.png" alt="Speaker 4">
+                    <img src="speaker4.webp" alt="Speaker 4">
                 </div>
                 <div class="circle-speaker" onclick="changeSpeaker(4)">
-                    <img src="speaker_1.png" alt="Speaker 5">
+                    <img src="speaker5.webp" alt="Speaker 5">
+                </div>
+                <div class="circle-speaker" onclick="changeSpeaker(5)">
+                    <img src="speaker6.webp" alt="Speaker 6">
                 </div>
             </div>
         </div>
     </div>
 
+    </div>
     <!-- Hidden data for speakers -->
-    <div class="speaker-data">
+    <div class="speaker-data" style="display: none;">
         <div id="speaker0">
-            <img src="speaker_1.png" alt="Otha Shoji">
+            <img src="speaker1.webp" alt="Otha Shoji">
             <h2>Otha Shoji</h2>
             <p>Marketing Manager</p>
             <p>Saperet tibique delicatissimi per et, laudem propriae cotidieuo. Ea agam postu</p>
         </div>
         <div id="speaker1">
-            <img src="speaker_2.png" alt="Alex Kim">
+            <img src="speaker2.webp" alt="Alex Kim">
             <h2>Alex Kim</h2>
             <p>UI Designer</p>
             <p>Expert in creating beautiful user interfaces with focus on user experience.</p>
         </div>
         <div id="speaker2">
-            <img src="speaker_3.png" alt="Sarah Johnson">
+            <img src="speaker3.webp" alt="Sarah Johnson">
             <h2>Sarah Johnson</h2>
             <p>Content Strategist</p>
             <p>Creating engaging content strategies for major brands worldwide.</p>
         </div>
         <div id="speaker3">
-            <img src="speaker_4.png" alt="Miguel Rodriguez">
+            <img src="speaker4.webp" alt="Miguel Rodriguez">
             <h2>Miguel Rodriguez</h2>
             <p>Development Lead</p>
             <p>Full-stack developer with expertise in modern web technologies.</p>
         </div>
         <div id="speaker4">
-            <img src="speaker_1.png" alt="Emma Chen">
+            <img src="speaker5.webp" alt="Emma Chen">
             <h2>Emma Chen</h2>
             <p>Product Manager</p>
             <p>Leading product development teams with agile methodologies.</p>
         </div>
+        <div id="speaker5">
+            <img src="speaker6.webp" alt="James Wilson">
+            <h2>James Wilson</h2>
+            <p>SEO Specialist</p>
+            <p>Expert in search engine optimization and digital marketing strategies.</p>
+        </div>
     </div>
 
+    <!------------------------sponsors sections-------------------------------------->
+
+      <section class="sponsors-section">
+        <div class="contr">
+             <div class="section-heading" style="margin-bottom: 60px;">
+            <h2>Our Sponsors</h2>
+        </div>
+            <div class="sponsors-container">
+                <div class="sponsor-logo">
+                    <img src="sponsor1.png" alt="Delivery Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor2.png" alt="TechLogo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor3.png" alt="Hipster Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor4.png" alt="Forward Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor5.png" alt="Stereo Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor7.png" alt="Eventex Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="sponsor8.png" alt="Travel Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-----------------------------form section----------------------------------------->
+
+      <div class="section-heading" style="margin-top: 80px;">
+            <h2>Register Form</h2>
+        </div>
+ <div class="submit">
+        <div class="image-section">
+            <img src="form.png" alt="Background Image">
+        </div>
+        <div class="form-section" id="registrationForm">
+            <div class="form-content">
+                <div class="input-group">
+                    <div class="section-heading" style="margin-bottom: 50px;">
+                        <h2 style="color: white;">Information Details</h2>
+                    </div>
+                    
+                    <label for="email">Email or Mobile Number</label>
+                    <input type="text" id="email" placeholder="Enter your email or mobile number">
+                </div>
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name">
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="input-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" placeholder="Enter your company name">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing">
+                    <label for="marketing">I would like to receive marketing communications from Xmee</label>
+                </div>
+                <button class="sign-in-btn">Submit</button>
+                
+                <div class="separator">
+                    <span>Or Continue with</span>
+                </div>
+                
+                 <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!----------------------------footer section------------------------------------------------>
+<div class="content">
+        <!-- Your page content goes here -->
+    </div>
+    
+    <footer class="footer">
+          <div class="footer-logo">
+      <a href="#" class="logo">
+        <img style="width: 40px;margin-left: 40px;" src="log.png" alt="EventX Logo">
+      </a>
+    </div>
+        
+        
+        
+        <div class="footer-container">
+            <div class="newsletter-section">
+                <h3>Get The Latest Offers</h3>
+                <h2>Subscribe To Newsletter</h2>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="email@gmail.com" required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                    
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                   
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-dribbble"></i>
+                    
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                   
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                    
+                </a>
+            </div>
+            
+            
+            
+            <div class="copyright">
+                Copyright © 2025. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
     <script>
+        // Array to store speaker data
+        const speakers = [
+            {
+                image: "speaker1.webp",
+                name: "Otha Shoji",
+                role: "Marketing Manager",
+                bio: "Saperet tibique delicatissimi per et, laudem propriae cotidieuo."
+            },
+            {
+                image: "speaker2.webp",
+                name: "Alex Kim",
+                role: "UI Designer",
+                bio: "Expert in creating beautiful user interfaces with focus experience."
+            },
+            {
+                image: "speaker3.webp",
+                name: "Sarah Johnson",
+                role: "Content Strategist",
+                bio: "Creating engaging content strategies for major brands worldwide."
+            },
+            {
+                image: "speaker4.webp",
+                name: "Miguel Rodriguez",
+                role: "Development Lead",
+                bio: "Full-stack developer with expertise in modern web technologies."
+            },
+            {
+                image: "speaker5.webp",
+                name: "Emma Chen",
+                role: "Product Manager",
+                bio: "Leading product development teams with agile methodologies."
+            },
+            {
+                image: "speaker6.webp",
+                name: "James Wilson",
+                role: "SEO Specialist",
+                bio: "Expert in search engine optimization and digital marketing strategies."
+            }
+        ];
+
+        // Variable to track current speaker
+        let currentSpeakerIndex = 0;
+
         // Function to change the main speaker when clicking on circular images
         function changeSpeaker(speakerIndex) {
-            // Get speaker data
-            const speakerId = 'speaker' + speakerIndex;
-            const speakerDiv = document.getElementById(speakerId);
+            // Get all circle speakers
+            const circleSpeakers = document.querySelectorAll('.circle-speaker');
             
-            if (speakerDiv) {
-                const speakerImg = speakerDiv.querySelector('img').src;
-                const speakerName = speakerDiv.querySelector('h2').innerText;
-                const speakerRole = speakerDiv.querySelector('p').innerText;
-                const speakerBio = speakerDiv.querySelectorAll('p')[1].innerText;
-                
-                // Update main display with animation
-                document.getElementById('mainSpeakerImage').style.opacity = '0';
-                document.getElementById('mainSpeakerName').style.opacity = '0';
-                document.getElementById('mainSpeakerRole').style.opacity = '0';
-                document.getElementById('mainSpeakerBio').style.opacity = '0';
-                
-                setTimeout(() => {
-                    document.getElementById('mainSpeakerImage').src = speakerImg;
-                    document.getElementById('mainSpeakerName').innerText = speakerName;
-                    document.getElementById('mainSpeakerRole').innerText = speakerRole;
-                    document.getElementById('mainSpeakerBio').innerText = speakerBio;
-                    
-                    document.getElementById('mainSpeakerImage').style.opacity = '1';
-                    document.getElementById('mainSpeakerName').style.opacity = '1';
-                    document.getElementById('mainSpeakerRole').style.opacity = '1';
-                    document.getElementById('mainSpeakerBio').style.opacity = '1';
-                }, 300);
+            // Remove active class from all
+            circleSpeakers.forEach(element => {
+                element.classList.remove('active');
+            });
+            
+            // Add active class to selected speaker
+            circleSpeakers[speakerIndex].classList.add('active');
+            
+            // Get speaker data
+            const speaker = speakers[speakerIndex];
+            
+            // Determine animation direction based on index comparison
+            let animationClass = 'fade-in';
+            
+            // For the left side speakers (0,1,2) content should come from left to right
+            if (speakerIndex <= 2) {
+                animationClass = 'slide-in-right';
+            } 
+            // For the right side speakers (3,4,5) content should come from right to left
+            else if (speakerIndex >= 3) {
+                animationClass = 'slide-in-left';
             }
+            
+            // Update current speaker index
+            currentSpeakerIndex = speakerIndex;
+            
+            // Fade out current info
+            document.getElementById('mainSpeakerImage').style.opacity = '0';
+            document.getElementById('mainSpeakerName').style.opacity = '0';
+            document.getElementById('mainSpeakerRole').style.opacity = '0';
+            document.getElementById('mainSpeakerBio').style.opacity = '0';
+            
+            // Update after fade out
+            setTimeout(() => {
+                // Update content
+                document.getElementById('mainSpeakerImage').src = speaker.image;
+                document.getElementById('mainSpeakerName').innerText = speaker.name;
+                document.getElementById('mainSpeakerRole').innerText = speaker.role;
+                document.getElementById('mainSpeakerBio').innerText = speaker.bio;
+                
+                // Remove any existing animation classes
+                const infoElements = [
+                    document.getElementById('mainSpeakerName'),
+                    document.getElementById('mainSpeakerRole'),
+                    document.getElementById('mainSpeakerBio')
+                ];
+                
+                infoElements.forEach(el => {
+                    el.classList.remove('slide-in-right', 'slide-in-left', 'fade-in');
+                    // Trigger reflow to restart animation
+                    void el.offsetWidth;
+                    el.classList.add(animationClass);
+                });
+                
+                // Fade in updated info
+                document.getElementById('mainSpeakerImage').style.opacity = '1';
+                document.getElementById('mainSpeakerName').style.opacity = '1';
+                document.getElementById('mainSpeakerRole').style.opacity = '1';
+                document.getElementById('mainSpeakerBio').style.opacity = '1';
+            }, 300);
         }
+
+        // Initialize with the first speaker
+        document.addEventListener('DOMContentLoaded', function() {
+            changeSpeaker(0);
+        });
     </script>
-   
+
     <!-- JavaScript for Scrolling Navbar Effect -->
     <script>
         window.addEventListener('scroll', function() {
@@ -1295,5 +2036,11 @@ h1 {
             }
         });
     </script>
+
+   <script>
+  document.querySelector('.sign-in-btn').addEventListener('click', function () {
+    window.location.href = 'thank.html';
+  });
+</script>
 </body>
 </html>
